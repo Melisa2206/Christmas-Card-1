@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            background-image: url(background.jpg);
+        }
+
+        #card {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            perspective: 1000px;
+            cursor: pointer;
+            margin: 50px auto;
+        }
+
+        #card:hover #inner {
+            transform: rotateY(-180deg);
+        }
+
+        #inner {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+
+        #front, #back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            font-family: 'Baskerville Old Face', serif;
+        }
+
+        #front {
+            transform: rotateY(0deg);
+            background-image: url(christmasBeige.jpg);
+            color: white;
+        }
+
+        #back {
+            transform: rotateY(-180deg);
+            background-image: url(christmasred.jpeg);
+            color: white;
+        }
+
+        #message {
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="card" onclick="flipCard()">
+        <div id="inner">
+            <div id="front">
+                <!-- Front cover content -->
+                <h1>Merry Christmas</h1>
+                <!-- Add Christmas images or decorations here -->
+            </div>
+            <div id="back">
+                <!-- Back cover content -->
+                <div id="message">
+                    <p>Wishing you a Merry Christmas and a Happy New Year!</p>
+                    <p>May your days be filled with joy, love, and laughter.</p>
+                    <p>From : Melisa , Silvia , Dan</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function flipCard() {
+            var card = document.getElementById('inner');
+            card.style.transform = card.style.transform === 'rotateY(-180deg)' ? 'rotateY(0deg)' : 'rotateY(-180deg)';
+        }
+    </script>
+</body>
+</html>
